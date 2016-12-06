@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>截取头像</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0, minimun-scale=1.0,user-scalable=no;">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/zepto.js"></script>
+</head>
+
+<body>
+    <div class="cut-img-main">
+        <div id="clipArea"></div>
+        <button class="fix-btn" id="clipBtn">确定</button>
+    </div>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/iscroll-zoom.js"></script>
+    <script src="js/hammer.js"></script>
+    <!-- 手势插件 -->
+    <script src="js/lrz.all.bundle.js"></script>
+    <!-- 图片压缩插件 ，转base64功能-->
+    <script src="js/PhotoClip.min.js"></script>
+    <script>
+        var clipArea = new PhotoClip("#clipArea", {
+            size: [260, 260],
+            outputSize: [640, 640],
+            ok: "#clipBtn",
+            loadStart: function() {
+                console.log("照片读取中");
+            },
+            loadComplete: function() {
+                console.log("照片读取完成");
+            },
+            clipFinish: function(dataURL) {
+                console.log(dataURL); //截取区域的base64图片
+                alert('头像截取成功')
+            }
+        });
+        //clipArea.destroy(); // 销毁
+        clipArea.setImg("img/mm.jpg");//截取对象图片
+    </script>
+</body>
+
+</html>
