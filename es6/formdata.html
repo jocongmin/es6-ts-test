@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onSubmit="subFn(event)" id="theForm">
+        <input type="text" name="one" value="0"></input>
+        <input type="number" name="two" value="0"></input>
+        <input type="submit"></input>
+    </form>
+</body>
+<script type="text/javascript">
+function subFn(e) {
+	e.preventDefault();
+    var theForm = document.getElementById('theForm')
+    var data = new FormData(theForm)
+    console.log(data)
+    console.log(data.getAll('one'))//获取相同name的值的全部数据
+    console.log(data.get('two'))//获取第一个name的值
+    console.log(data)
+}
+
+function subFn2() {
+    var fd = new FormData();
+    fd.append("name", "脚本之家");
+    fd.append("blog", "http://jb51.net");
+    console.log(fd)
+}
+</script>
+
+</html>
